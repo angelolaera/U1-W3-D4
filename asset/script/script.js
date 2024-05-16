@@ -2,9 +2,9 @@
 
 // PARTE 1 - PARTE STATICA DELLA  PAGINA
 
-// 1. I seguenti task dovranno essere eseguiti all'avvio dell'applicazione per poter creare tutta la struttura del bingo
-// 2. Dobbiamo inserire le 76 celle dei numeri nel bingo
-// 3. Dobbiamo  creare il  bottone "GENERATE NUMER"
+// 1. I seguenti task dovranno essere eseguiti all'avvio dell'applicazione per poter creare tutta la struttura del bingo✅
+// 2. Dobbiamo inserire le 76 celle dei numeri nel bingo✅
+// 3. Dobbiamo  creare il  bottone "GENERATE NUMER"✅
 
 // PARTE 2 - PARTE DINAMICA  DELLA PAGINA
 
@@ -40,6 +40,16 @@ const creaNumeri = (numerii) => {
     grigliaNumeri.appendChild(cellagriglia);
   }
 };
+
+const button = document.getElementById("button");
+function generaNumeroRandom() {
+  const numerocasuale = Math.floor(Math.random() * 77);
+  const numeroElemento = document.getElementById("randomNumber");
+  numeroElemento.textContent = `Numero generato: ${numeroCasuale}`;
+
+  const boxnumero = document.createElement(div);
+  boxnumero.classList.add("numerodelbox");
+}
 
 window.addEventListener("DOMContentLoaded", () => {
   creaNumeri(76);
