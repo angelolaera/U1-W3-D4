@@ -20,9 +20,7 @@ const creaNumeri = (numerii) => {
   const grigliaNumeri = document.getElementById("grigliaNumeri");
 
   // 2. Devo creare un certo numero di celle, 'certo numero' è un valore che viene passato come parametro
-  for (let i = 1; i <= numerii; i++) {
-    griglia.push([]);
-    console.log(griglia);
+  for (let i = 0; i < numerii; i++) {
     // 2.1 Ad ogni iterazione dovrò creare un div, la cella
     const cellagriglia = document.createElement("div");
 
@@ -31,25 +29,38 @@ const creaNumeri = (numerii) => {
 
     // 2.3 All'interno del div dovrà esserci un h3 con il numero
     const numberCell = document.createElement("h3");
-    numberCell.innerText = i;
+    numberCell.innerText = i + 1;
 
     // 2.4 Devo appendere l'h3 appena creato alla cella
     cellagriglia.appendChild(numberCell);
 
     //2.5 Devo  appendere la cella alla  griglia
     grigliaNumeri.appendChild(cellagriglia);
+
+    griglia.push(cellagriglia);
   }
 };
 
+const numeriUsciti = [];
 const button = document.getElementById("button");
-function generaNumeroRandom() {
-  const numerocasuale = Math.floor(Math.random() * 77);
-  const numeroElemento = document.getElementById("randomNumber");
-  numeroElemento.textContent = `Numero generato: ${numeroCasuale}`;
 
-  const boxnumero = document.createElement(div);
-  boxnumero.classList.add("numerodelbox");
-}
+const generaNumero = function () {
+  //Crea un numero random
+  const numerorandom = Math.floor(Math.random() * 76);
+  // Se l'array include il  numero random ( da verificare tramite il metodo .includes(), se è vero tramite return
+  //facciamo ripartire la funzione  generaNumero
+  if (numeriUsciti.includes(numerorandom)) {
+    return generaNumero();
+    // nel caso in cui il numero non fosse già presente, lo pushamo nell'array numeriUsciti e successivamente andiamo a selezionare
+    //tramite griglia[numerorandom] il numero applicando la classe "selezionata"
+  } else {
+    numeriUsciti.push(numerorandom);
+    // In questo  momento abbiamo selezionato nell'array griglia l'elemento che  viene passato dal numero random
+    griglia[numerorandom].classList.add("selezionata");
+  }
+};
+
+button.addEventListener("click", generaNumero);
 
 window.addEventListener("DOMContentLoaded", () => {
   creaNumeri(76);
